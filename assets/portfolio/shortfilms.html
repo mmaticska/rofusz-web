@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Films | Ferenc Rofusz</title>
+    <meta name="description" content="Short animated films by Ferenc Rofusz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-shortfilms.css">
+    <script src="script-shortfilms.js" defer></script>
+</head>
+<body>
+    <header class="top-bar" id="top-bar">
+        <div class="top-bar-left">
+            <a href="../../portfolio.html" class="back-arrow" id="back-arrow" title="Back to portfolio">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav class="cv-nav" id="cv-navigation">
+                <a href="../../cv.html" id="nav-cv">cv</a>
+                <span class="separator">-</span>
+                <a href="../../interviews.html" id="nav-interviews">interviews</a>
+                <span class="separator">-</span>
+                <a href="../../portfolio.html" id="nav-portfolio" class="active-page">portfolio</a>
+                <span class="separator">-</span>
+                <a href="../../contact.html" id="nav-contact">contact</a>
+            </nav>
+        </div>
+        <div class="top-bar-right">
+            <button class="lang-toggle" id="lang-toggle" title="Switch language" aria-label="Switch language">
+                <svg id="flag-icon" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+
+    <main class="detail-container">
+        <!-- 9-Card Grid View -->
+        <div id="films-grid-view">
+            <div class="video-player-header">
+                <a href="../../portfolio.html" class="video-back-button" aria-label="Back to portfolio">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <h2 class="page-title" data-hu="Rövidfilmek" data-en="Short films">Rövidfilmek</h2>
+            </div>
+            <div class="shortfilms-grid">
+                <!-- 0. a_ko_1973 -->
+                <a href="#" class="portfolio-card" id="film-a-ko-1973" data-video="-E0ISmDYInw">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/a_ko_cover.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="A kő (1973)" data-en="The Stone (1973)">A kő (1973)</h3>
+                </a>
+
+                <!-- 1. the fly_1980 -->
+                <a href="#" class="portfolio-card" id="film-the-fly-1980" data-video="https://player.vimeo.com/video/719425512?autoplay=1">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/The_fly.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="A légy (1980)" data-en="The Fly (1980)">A légy (1980)</h3>
+                </a>
+
+                <!-- 2. the fly_workshop -->
+                <a href="#" class="portfolio-card" id="film-the-fly-workshop" data-video="AgMYpuUhImk">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/The_fly_workshop.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="A légy - Műhely (1980)" data-en="The Fly - Workshop (1980)">A légy - Műhely (1980)</h3>
+                </a>
+
+                <!-- 3. deadlock_1982 -->
+                <a href="#" class="portfolio-card" id="film-deadlock-1982" data-video="https://player.vimeo.com/video/1201196090?h=69ab38bc46&autoplay=1">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/deadlock.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Holtpont (1982)" data-en="Deadlock (1982)">Holtpont (1982)</h3>
+                </a>
+
+                <!-- 4. gravity_1984 -->
+                <a href="#" class="portfolio-card" id="film-gravity-1984" data-video="bb9zlU9ceGQ">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/gravity.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Gravitáció (1984)" data-en="Gravity (1984)">Gravitáció (1984)</h3>
+                </a>
+
+                <!-- 5. ceasefire_2002 -->
+                <a href="#" class="portfolio-card" id="film-ceasefire-2002" data-video="eSWakvv6Im4">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/ceasefire.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Tüzet szüntess! (2002)" data-en="Ceasefire! (2002)">Tüzet szüntess! (2002)</h3>
+                </a>
+
+                <!-- 6. ticket_2011 -->
+                <a href="#" class="portfolio-card" id="film-ticket-2011" data-video="06-5FXfsj5c">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/Ticket-sirásó03.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Ticket (2011)" data-en="Ticket (2011)">Ticket (2011)</h3>
+                </a>
+
+                <!-- 7. last supper_2019 -->
+                <a href="#" class="portfolio-card" id="film-last-supper-2019" data-video="guQoQUC1ltE">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/last_supper.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Az utolsó vacsora (2019)" data-en="The Last Supper (2019)">Az utolsó vacsora (2019)</h3>
+                </a>
+
+                <!-- 8. bosch_2022 -->
+                <a href="#" class="portfolio-card" id="film-bosch-2022" data-video="hER_IzYE_hY">
+                    <div class="card-bg" style="background-image: url('shortfilms/cover/Bosch.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Bosch (2022)" data-en="Bosch (2022)">Bosch (2022)</h3>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hidden Video Player View -->
+        <div id="video-player-view" class="video-player-view hidden">
+            <div class="video-player-header">
+                <button class="video-back-button" id="video-view-back" aria-label="Back to films">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h2 class="page-title" id="player-main-title" data-hu="" data-en=""></h2>
+            </div>
+
+            <div id="videos-container" style="width: 100%; display: flex; flex-direction: column; gap: 2.5rem; align-items: inherit;"></div>
+        </div>
+    </main>
+</body>
+</html>

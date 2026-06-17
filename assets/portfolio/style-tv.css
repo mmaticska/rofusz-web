@@ -1,0 +1,306 @@
+@import url("style-showreel-commercials.css");
+
+/* Specific styles for TV Series video player and layout */
+
+.hidden {
+    display: none !important;
+}
+
+/* Video Player View Styling */
+.video-player-view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.video-player-view.dual-layout {
+    align-items: center;
+}
+
+.video-player-view .video-player-header {
+    margin-bottom: 0;
+}
+
+.video-player-view.dual-layout .video-player-header {
+    max-width: 760px;
+}
+
+.video-player-view .video-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.video-player-view.dual-layout .video-item {
+    max-width: 760px;
+}
+
+.video-player-view .video-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+}
+
+.video-player-view.dual-layout .video-title {
+    text-align: center;
+}
+
+/* Static Card Styling (cards that do not link to any videos yet) */
+.commercial-card.static-card {
+    cursor: default;
+}
+
+.commercial-card.static-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.commercial-card.static-card:hover .card-bg {
+    opacity: 0.45;
+    filter: grayscale(100%);
+    transform: none;
+}
+
+.commercial-card.static-card:hover .card-overlay {
+    background-color: rgba(255, 250, 237, 0);
+}
+
+/* Design grid: exactly 3 columns on desktop, 2 on tablet, 1 on mobile */
+.design-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .design-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .design-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Gallery View Styling */
+.gallery-view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.gallery-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.gallery-main-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 550px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.gallery-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Navigation Buttons inside Viewport */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.25s ease, transform 0.2s ease, opacity 0.25s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-nav:hover {
+    background-color: #ffffff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.gallery-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.gallery-prev {
+    left: 1.5rem;
+}
+
+.gallery-next {
+    right: 1.5rem;
+}
+
+.gallery-nav svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Image Counter */
+.gallery-counter {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #555555;
+    letter-spacing: 0.05em;
+}
+
+/* Thumbnails list */
+.gallery-thumbnails {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0.5rem 0.5rem 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.gallery-thumbnails::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.gallery-thumb {
+    flex: 0 0 90px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6;
+    transition: border-color 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-thumb:hover {
+    opacity: 0.9;
+    transform: scale(1.04);
+}
+
+.gallery-thumb.active {
+    border-color: #000000;
+    opacity: 1;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Video Thumbnail overlay play icon styling */
+.gallery-thumb.video-thumb {
+    position: relative;
+}
+
+.gallery-thumb.video-thumb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 5v14l11-7z' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-thumb.video-thumb:hover::after {
+    background-color: #ff0000;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+/* Responsive adjustments for viewport height */
+@media (max-width: 900px) {
+    .gallery-main-viewport {
+        height: 400px;
+    }
+    .gallery-prev {
+        left: 1rem;
+    }
+    .gallery-next {
+        right: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-main-viewport {
+        height: 280px;
+    }
+    .gallery-nav {
+        width: 38px;
+        height: 38px;
+    }
+    .gallery-nav svg {
+        width: 18px;
+        height: 18px;
+    }
+    .gallery-thumb {
+        flex: 0 0 60px;
+        height: 45px;
+    }
+}
+
+

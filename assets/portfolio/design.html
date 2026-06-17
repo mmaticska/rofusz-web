@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design | Ferenc Rofusz</title>
+    <meta name="description" content="Designs and drawings by Ferenc Rofusz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-design.css">
+    <script src="script-portfolio.js" defer></script>
+    <script src="script-design.js" defer></script>
+</head>
+<body>
+    <header class="top-bar" id="top-bar">
+        <div class="top-bar-left">
+            <a href="../../portfolio.html" class="back-arrow" id="back-arrow" title="Back to portfolio">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav class="cv-nav" id="cv-navigation">
+                <a href="../../cv.html" id="nav-cv">cv</a>
+                <span class="separator">-</span>
+                <a href="../../interviews.html" id="nav-interviews">interviews</a>
+                <span class="separator">-</span>
+                <a href="../../portfolio.html" id="nav-portfolio" class="active-page">portfolio</a>
+                <span class="separator">-</span>
+                <a href="../../contact.html" id="nav-contact">contact</a>
+            </nav>
+        </div>
+        <div class="top-bar-right">
+            <button class="lang-toggle" id="lang-toggle" title="Switch language" aria-label="Switch language">
+                <svg id="flag-icon" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+
+    <main class="detail-container">
+        <!-- Grid View -->
+        <div id="tv-grid-view">
+            <div class="video-player-header">
+                <a href="../../portfolio.html" class="video-back-button" aria-label="Back to portfolio">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <h2 class="page-title" data-hu="Tervek" data-en="Designs">Tervek</h2>
+            </div>
+            <div class="design-grid" data-base-path="design">
+                <a href="#" class="commercial-card" id="design-storyboard" data-folder="storyboard">
+                    <div class="card-bg"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Forgatókönyv" data-en="Storyboard">Forgatókönyv</h3>
+                </a>
+                <a href="#" class="commercial-card" id="design-traditional-animation" data-folder="traditional animation">
+                    <div class="card-bg"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Klasszikus animáció" data-en="Traditional animation">Klasszikus animáció</h3>
+                </a>
+                <a href="#" class="commercial-card" id="design-3d-animation" data-folder="3d animation">
+                    <div class="card-bg"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="3D animáció" data-en="3D animation">3D animáció</h3>
+                </a>
+                <a href="#" class="commercial-card" id="design-styles" data-folder="styles">
+                    <div class="card-bg"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Stílusok" data-en="Styles">Stílusok</h3>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hidden Gallery View -->
+        <div id="gallery-view" class="gallery-view hidden">
+            <div class="video-player-header">
+                <button class="video-back-button" id="gallery-view-back" aria-label="Back to designs">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h2 class="page-title" id="gallery-main-title" data-hu="" data-en=""></h2>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-main-viewport">
+                    <button class="gallery-nav gallery-prev" id="gallery-prev" aria-label="Previous image">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="gallery-image-wrapper">
+                        <img id="gallery-active-img" src="" alt="Active Gallery Image">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-next" id="gallery-next" aria-label="Next image">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="gallery-counter" id="gallery-counter">1 / 5</div>
+                
+                <div class="gallery-thumbnails" id="gallery-thumbnails">
+                    <!-- thumbnails generated dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

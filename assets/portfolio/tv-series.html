@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series | Ferenc Rofusz</title>
+    <meta name="description" content="TV Series work by Ferenc Rofusz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-tv.css">
+    <script src="script-portfolio.js" defer></script>
+    <script src="script-tv.js" defer></script>
+</head>
+<body>
+    <header class="top-bar" id="top-bar">
+        <div class="top-bar-left">
+            <a href="../../portfolio.html#tvseries" class="back-arrow" id="back-arrow" title="Back to portfolio">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav class="cv-nav" id="cv-navigation">
+                <a href="../../cv.html" id="nav-cv">cv</a>
+                <span class="separator">-</span>
+                <a href="../../interviews.html" id="nav-interviews">interviews</a>
+                <span class="separator">-</span>
+                <a href="../../portfolio.html" id="nav-portfolio" class="active-page">portfolio</a>
+                <span class="separator">-</span>
+                <a href="../../contact.html" id="nav-contact">contact</a>
+            </nav>
+        </div>
+        <div class="top-bar-right">
+            <button class="lang-toggle" id="lang-toggle" title="Switch language" aria-label="Switch language">
+                <svg id="flag-icon" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+
+    <main class="detail-container">
+        <!-- Grid View -->
+        <div id="tv-grid-view">
+            <div class="video-player-header">
+                <a href="../../portfolio.html#tvseries" class="video-back-button" aria-label="Back to portfolio">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <h2 class="page-title" data-hu="Tv sorozatok" data-en="TV series">Tv sorozatok</h2>
+            </div>
+            <div class="commercials-grid">
+                <a href="#" class="commercial-card" id="tv-hoppi-mesek">
+                    <div class="card-bg" style="background-image: url('tv-series/tv-series/Hoppi_Plakat_projector.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Hoppi mesék" data-en="Hoppi Tales">Hoppi mesék</h3>
+                </a>
+                <a href="#" class="commercial-card" id="tv-piros-vereb">
+                    <div class="card-bg" style="background-image: url('tv-series/tv-series/PirosVereb.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <h3 class="card-title" data-hu="Piros veréb" data-en="Red Sparrow">Piros veréb</h3>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hidden Video Player View -->
+        <div id="video-player-view" class="video-player-view hidden">
+            <div class="video-player-header">
+                <button class="video-back-button" id="video-view-back" aria-label="Back to TV series">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h2 class="page-title" id="player-main-title" data-hu="" data-en=""></h2>
+            </div>
+
+            <div id="videos-container" style="width: 100%; display: flex; flex-direction: column; gap: 2.5rem; align-items: inherit;"></div>
+        </div>
+    </main>
+</body>
+</html>
