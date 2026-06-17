@@ -215,7 +215,8 @@ main {
     position: relative;
     width: 100%;
     max-width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
     height: 0;
     background-color: #000000;
     border-radius: 12px;
@@ -312,6 +313,7 @@ main {
         opacity: 0;
         transform: translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -384,9 +386,9 @@ main {
         opacity: 0;
         overflow: hidden;
         visibility: hidden;
-        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                    opacity 0.35s ease, 
-                    visibility 0.35s ease;
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 0.35s ease,
+            visibility 0.35s ease;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
