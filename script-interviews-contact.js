@@ -64,14 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Load stored language preference (default to English)
-    const storedLang = localStorage.getItem("site-lang") || "en";
+    // Load stored language preference (default to Hungarian)
+    const storedLang = localStorage.getItem("site-lang") || "hu";
     updateLanguage(storedLang);
 
     // Language Toggle Click Event
     if (langBtn) {
         langBtn.addEventListener("click", () => {
-            const currentLang = localStorage.getItem("site-lang") || "en";
+            const currentLang = localStorage.getItem("site-lang") || "hu";
             const newLang = currentLang === "hu" ? "en" : "hu";
             localStorage.setItem("site-lang", newLang);
             updateLanguage(newLang);

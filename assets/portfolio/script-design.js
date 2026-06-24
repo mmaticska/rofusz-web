@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentImages.length === 0) return;
 
         // Set Title
-        const isHu = (localStorage.getItem("site-lang") || "en") === "hu";
+        const isHu = (localStorage.getItem("site-lang") || "hu") === "hu";
         galleryTitle.setAttribute("data-hu", titleHu);
         galleryTitle.setAttribute("data-en", titleEn);
         galleryTitle.textContent = isHu ? titleHu : titleEn;

@@ -19,9 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <rect width="28" height="6.67" y="13.33" fill="#397D3B"/>
     `;
 
-    // Load language preference (default to English)
-    const storedLang = localStorage.getItem("site-lang") || "en";
+    // Load language preference (default to Hungarian)
+    const storedLang = localStorage.getItem("site-lang") || "hu";
     let showingHungarian = storedLang === "hu";
+
+    // Function to translate inline elements with data-hu and data-en attributes
+    function translateElements(isHu) {
+        const translatableElements = document.querySelectorAll("[data-hu][data-en]");
+        translatableElements.forEach(el => {
+            el.textContent = isHu ? el.getAttribute("data-hu") : el.getAttribute("data-en");
+        });
+    }
 
     // Set initial display based on language selection
     if (showingHungarian) {
@@ -35,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (flagIcon) flagIcon.innerHTML = hungarianFlag;
         document.documentElement.lang = "en";
     }
+    translateElements(showingHungarian);
 
     if (langBtn) {
         langBtn.addEventListener("click", () => {
@@ -69,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.lang = "hu";
                 localStorage.setItem("site-lang", "hu");
             }
+            translateElements(showingHungarian);
         });
     }
 

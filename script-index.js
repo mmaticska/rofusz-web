@@ -115,8 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastNameSpan = document.querySelector(".last-name");
 
     if (firstNameSpan && lastNameSpan) {
-        const firstNameText = "FERENC";
-        const lastNameText = "ROFUSZ.";
+        const firstNameText = "RÓFUSZ";
+        const lastNameText = "FERENC";
 
         // Clear fallback text to initiate typewriter
         firstNameSpan.textContent = "";

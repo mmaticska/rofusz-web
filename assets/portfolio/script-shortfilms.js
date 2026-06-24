@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Load language preference (default to English)
-    const storedLang = localStorage.getItem("site-lang") || "en";
+    // Load language preference (default to Hungarian)
+    const storedLang = localStorage.getItem("site-lang") || "hu";
     updateLanguage(storedLang);
 
     // Language Toggle Click Event
     if (langBtn) {
         langBtn.addEventListener("click", () => {
-            const currentLang = localStorage.getItem("site-lang") || "en";
+            const currentLang = localStorage.getItem("site-lang") || "hu";
             const newLang = currentLang === "hu" ? "en" : "hu";
             localStorage.setItem("site-lang", newLang);
             updateLanguage(newLang);
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const mainTitleHu = cardTitleEl ? cardTitleEl.getAttribute("data-hu") : "";
             const mainTitleEn = cardTitleEl ? cardTitleEl.getAttribute("data-en") : "";
             
-            const currentLang = localStorage.getItem("site-lang") || "en";
+            const currentLang = localStorage.getItem("site-lang") || "hu";
             const isHu = currentLang === "hu";
 
             const mainTitleEl = document.getElementById("player-main-title");
