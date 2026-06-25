@@ -133,4 +133,127 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+
+    // ─── Mobile Gallery ───
+    function initMobileGallery(sectionEl) {
+        const imagesSide = sectionEl.querySelector('.cv-images-side');
+        if (!imagesSide) return;
+
+        const images = imagesSide.querySelectorAll('img');
+        if (images.length === 0) return;
+
+        // Find the last bio-text paragraph to insert gallery after it
+        const bioTexts = sectionEl.querySelectorAll('.bio-text');
+        if (bioTexts.length === 0) return;
+        const lastBioText = bioTexts[bioTexts.length - 1];
+
+        // Build gallery HTML
+        const gallery = document.createElement('div');
+        gallery.className = 'mobile-gallery';
+
+        const track = document.createElement('div');
+        track.className = 'gallery-track';
+
+        images.forEach(img => {
+            const slide = document.createElement('div');
+            slide.className = 'gallery-slide';
+            const clonedImg = img.cloneNode(true);
+            slide.appendChild(clonedImg);
+            track.appendChild(slide);
+        });
+
+        gallery.appendChild(track);
+
+        // Dots
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'gallery-dots';
+        images.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Image ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        gallery.appendChild(dotsContainer);
+
+        // Counter
+        const counter = document.createElement('div');
+        counter.className = 'gallery-counter';
+        counter.textContent = `1 / ${images.length}`;
+        gallery.appendChild(counter);
+
+        // Insert after last bio-text
+        lastBioText.insertAdjacentElement('afterend', gallery);
+
+        // Gallery logic
+        let currentIndex = 0;
+        const totalSlides = images.length;
+
+        function goToSlide(index) {
+            currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Update dots
+            dotsContainer.querySelectorAll('.gallery-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentIndex);
+            });
+            // Update counter
+            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        // Touch swipe support
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        let isHorizontalSwipe = null;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+            isHorizontalSwipe = null;
+            track.style.transition = 'none';
+        }, { passive: true });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const diffX = currentX - startX;
+            const diffY = currentY - startY;
+
+            // Determine swipe direction on first significant movement
+            if (isHorizontalSwipe === null && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
+                isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
+            }
+
+            if (isHorizontalSwipe) {
+                e.preventDefault();
+                const offset = -currentIndex * 100 + (diffX / track.offsetWidth) * 100;
+                track.style.transform = `translateX(${offset}%)`;
+            }
+        }, { passive: false });
+
+        track.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = '';
+            const endX = e.changedTouches[0].clientX;
+            const diff = endX - startX;
+            const threshold = 50;
+
+            if (isHorizontalSwipe) {
+                if (diff < -threshold && currentIndex < totalSlides - 1) {
+                    goToSlide(currentIndex + 1);
+                } else if (diff > threshold && currentIndex > 0) {
+                    goToSlide(currentIndex - 1);
+                } else {
+                    goToSlide(currentIndex); // snap back
+                }
+            }
+        }, { passive: true });
+    }
+
+    // Initialize mobile galleries for both language sections
+    if (hunCv) initMobileGallery(hunCv);
+    if (engCv) initMobileGallery(engCv);
 });

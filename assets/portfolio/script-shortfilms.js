@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     labelEn: "01 - Storyboard"
                 },
                 {
-                    src: "21SQmzGlysA",
+                    src: "ctwS-hmObKQ",
                     isYouTube: true,
                     autoplay: false,
                     labelHu: "02 - Inbetween (Fázisrajz)",
@@ -165,17 +165,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 { src: "06-5FXfsj5c", isYouTube: true }
             ]
         },
-        "film-last-supper-2019": {
+        "film-last-supper-2018": {
             videos: [
                 {
-                    src: "NzzkaDyag54",
+                    src: "TeegzVd_H-g",
                     isYouTube: true,
                     autoplay: true,
                     labelHu: "Magyar verzió",
                     labelEn: "Hungarian version"
                 },
                 {
-                    src: "QzIsd07lZzk",
+                    src: "RiwDGlMNlFk",
                     isYouTube: true,
                     autoplay: false,
                     labelHu: "Angol verzió",
