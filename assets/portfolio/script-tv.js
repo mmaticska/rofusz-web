@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const mainTitleHu = config.isTrailer ? `${baseTitleHu} - előzetes` : baseTitleHu;
             const mainTitleEn = config.isTrailer ? `${baseTitleEn} - trailer` : baseTitleEn;
 
-            const currentLang = localStorage.getItem("site-lang") || "hu";
+            const currentLang = sessionStorage.getItem("site-lang") || "hu";
             const isHu = currentLang === "hu";
 
             const mainTitleEl = document.getElementById("player-main-title");

@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const galleryPrevBtn = document.getElementById("gallery-prev");
     const galleryNextBtn = document.getElementById("gallery-next");
     const galleryBackBtn = document.getElementById("gallery-view-back");
+    const viewport = document.querySelector(".gallery-main-viewport");
 
     // Dynamic base-path retrieval
     const designGrid = document.querySelector(".design-grid");
@@ -249,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentImages.length === 0) return;
 
         // Set Title
-        const isHu = (localStorage.getItem("site-lang") || "hu") === "hu";
+        const isHu = (sessionStorage.getItem("site-lang") || "hu") === "hu";
         galleryTitle.setAttribute("data-hu", titleHu);
         galleryTitle.setAttribute("data-en", titleEn);
         galleryTitle.textContent = isHu ? titleHu : titleEn;
@@ -257,6 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show Gallery View, Hide Grid
         if (gridView) gridView.classList.add("hidden");
         if (galleryView) galleryView.classList.remove("hidden");
+
+        // Set body state for gallery view
+        document.body.classList.add("gallery-active");
 
         updateGalleryImage();
         generateThumbnails();
@@ -347,6 +351,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (galleryView) galleryView.classList.add("hidden");
         if (gridView) gridView.classList.remove("hidden");
+        
+        // Clean up zoom overlay if any
+        const zoomOverlay = document.querySelector(".gallery-zoom-overlay");
+        if (zoomOverlay) zoomOverlay.remove();
+        document.body.style.overflow = "";
+        
+        // Remove body state for gallery view
+        document.body.classList.remove("gallery-active");
+
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -383,16 +396,68 @@ document.addEventListener("DOMContentLoaded", () => {
             closeGallery();
         });
     }
+    // 7.5. Zoom Event Listeners (Fullscreen Lightbox)
+    if (viewport) {
+        viewport.addEventListener("click", (e) => {
+            if (e.target && e.target.id === "gallery-active-img") {
+                const overlay = document.createElement("div");
+                overlay.className = "gallery-zoom-overlay";
+
+                const img = document.createElement("img");
+                img.src = e.target.src;
+                img.alt = e.target.alt;
+
+                const closeBtn = document.createElement("button");
+                closeBtn.className = "gallery-zoom-close-btn";
+                closeBtn.setAttribute("aria-label", "Close zoom view");
+                closeBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                `;
+
+                overlay.appendChild(img);
+                overlay.appendChild(closeBtn);
+                document.body.appendChild(overlay);
+
+                document.body.style.overflow = "hidden";
+
+                const closeZoom = () => {
+                    overlay.remove();
+                    document.body.style.overflow = "";
+                    document.removeEventListener("keydown", handleEsc);
+                };
+
+                const handleEsc = (event) => {
+                    if (event.key === "Escape") {
+                        event.stopPropagation();
+                        closeZoom();
+                    }
+                };
+
+                closeBtn.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    closeZoom();
+                });
+
+                overlay.addEventListener("click", () => {
+                    closeZoom();
+                });
+
+                document.addEventListener("keydown", handleEsc);
+            }
+        });
+    }
 
     // 8. Keyboard navigation support (ArrowLeft, ArrowRight, Escape)
     document.addEventListener("keydown", (e) => {
         if (galleryView && !galleryView.classList.contains("hidden")) {
-            if (e.key === "Escape") {
+            if (e.key === "Escape" && !document.querySelector(".gallery-zoom-overlay")) {
                 closeGallery();
-            } else if (e.key === "ArrowLeft") {
+            } else if (e.key === "ArrowLeft" && !document.querySelector(".gallery-zoom-overlay")) {
                 currentIndex--;
                 updateGalleryImage();
-            } else if (e.key === "ArrowRight") {
+            } else if (e.key === "ArrowRight" && !document.querySelector(".gallery-zoom-overlay")) {
                 currentIndex++;
                 updateGalleryImage();
             }

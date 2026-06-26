@@ -126,6 +126,9 @@
 }
 
 .gallery-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -202,6 +205,7 @@
     gap: 0.75rem;
     overflow-x: auto;
     padding: 0.5rem 0.5rem 1rem;
+    flex-shrink: 0;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
@@ -300,4 +304,171 @@
         flex: 0 0 60px;
         height: 45px;
     }
+}
+
+/* Fullscreen Lightbox Overlay for Zoomed Images */
+.gallery-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 100000; /* Extremely high z-index to overlay everything including top-bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+
+.gallery-zoom-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    animation: zoomInLight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomInLight {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gallery-zoom-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 100001;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-zoom-close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.08);
+}
+
+.gallery-zoom-close-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Active image styling in the gallery */
+#gallery-active-img {
+    cursor: zoom-in;
+}
+
+@media (max-width: 600px) {
+    .gallery-zoom-overlay img {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+    .gallery-zoom-close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 38px;
+        height: 38px;
+    }
+    .gallery-zoom-close-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Gallery Active Viewport-constrained Layout */
+body.gallery-active {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body.gallery-active .detail-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.5rem 2rem 1.5rem;
+}
+
+body.gallery-active .gallery-view {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+body.gallery-active .gallery-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+body.gallery-active .gallery-main-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    flex: 1;
+    min-height: 0;
+    height: auto !important; /* overrides fixed height */
+}
+
+body.gallery-active .gallery-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+body.gallery-active .gallery-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+body.gallery-active .gallery-thumbnails {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    flex-shrink: 0;
 }

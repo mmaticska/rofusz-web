@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     // Load language preference (default to Hungarian)
-    const storedLang = localStorage.getItem("site-lang") || "hu";
+    const storedLang = sessionStorage.getItem("site-lang") || "hu";
     let showingHungarian = storedLang === "hu";
 
     // Function to translate inline elements with data-hu and data-en attributes
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 flagIcon.innerHTML = hungarianFlag;
                 showingHungarian = false;
                 document.documentElement.lang = "en";
-                localStorage.setItem("site-lang", "en");
+                sessionStorage.setItem("site-lang", "en");
             } else {
                 // Switch back to Hungarian CV
                 engCv.classList.add("hidden");
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 flagIcon.innerHTML = englishFlag;
                 showingHungarian = true;
                 document.documentElement.lang = "hu";
-                localStorage.setItem("site-lang", "hu");
+                sessionStorage.setItem("site-lang", "hu");
             }
             translateElements(showingHungarian);
         });
@@ -164,6 +164,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         gallery.appendChild(track);
 
+        // Navigation arrows
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'gallery-nav gallery-prev';
+        prevBtn.setAttribute('aria-label', 'Previous image');
+        prevBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 19L8 12L15 5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `;
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToSlide(currentIndex - 1);
+        });
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'gallery-nav gallery-next';
+        nextBtn.setAttribute('aria-label', 'Next image');
+        nextBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `;
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToSlide(currentIndex + 1);
+        });
+
+        gallery.appendChild(prevBtn);
+        gallery.appendChild(nextBtn);
+
         // Dots
         const dotsContainer = document.createElement('div');
         dotsContainer.className = 'gallery-dots';
@@ -198,6 +228,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             // Update counter
             counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+
+            // Enable/disable arrows based on position
+            prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+            prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+            nextBtn.style.opacity = currentIndex === totalSlides - 1 ? '0.3' : '1';
+            nextBtn.style.pointerEvents = currentIndex === totalSlides - 1 ? 'none' : 'auto';
         }
 
         // Touch swipe support
@@ -251,6 +287,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }, { passive: true });
+
+        // Initialize state
+        goToSlide(0);
     }
 
     // Initialize mobile galleries for both language sections

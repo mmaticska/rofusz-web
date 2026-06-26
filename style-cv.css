@@ -497,6 +497,49 @@ body {
         padding-bottom: 4px;
     }
 
+    .mobile-gallery .gallery-nav {
+        position: absolute;
+        top: calc(50% - 20px);
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        color: #000000;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        padding: 0;
+    }
+
+    .mobile-gallery .gallery-nav:active {
+        transform: translateY(-50%) scale(0.9);
+        background-color: #ffffff;
+    }
+
+    .mobile-gallery .gallery-prev {
+        left: 12px;
+    }
+
+    .mobile-gallery .gallery-next {
+        right: 12px;
+    }
+
+    .mobile-gallery .gallery-nav svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+        stroke-width: 2.5;
+        fill: none;
+    }
+
     /* Hide the original images column on mobile */
     .cv-images-side {
         display: none !important;

@@ -45,15 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Load language preference (default to Hungarian)
-    const storedLang = localStorage.getItem("site-lang") || "hu";
+    const storedLang = sessionStorage.getItem("site-lang") || "hu";
     updateLanguage(storedLang);
 
     // Language Toggle Click Event
     if (langBtn) {
         langBtn.addEventListener("click", () => {
-            const currentLang = localStorage.getItem("site-lang") || "hu";
+            const currentLang = sessionStorage.getItem("site-lang") || "hu";
             const newLang = currentLang === "hu" ? "en" : "hu";
-            localStorage.setItem("site-lang", newLang);
+            sessionStorage.setItem("site-lang", newLang);
             updateLanguage(newLang);
         });
     }
@@ -168,14 +168,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "film-last-supper-2018": {
             videos: [
                 {
-                    src: "TeegzVd_H-g",
+                    src: "WnN2--dAHxY",
                     isYouTube: true,
                     autoplay: true,
                     labelHu: "Magyar verzió",
                     labelEn: "Hungarian version"
                 },
                 {
-                    src: "RiwDGlMNlFk",
+                    src: "FShD5TfZnKo",
                     isYouTube: true,
                     autoplay: false,
                     labelHu: "Angol verzió",
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const mainTitleHu = cardTitleEl ? cardTitleEl.getAttribute("data-hu") : "";
             const mainTitleEn = cardTitleEl ? cardTitleEl.getAttribute("data-en") : "";
             
-            const currentLang = localStorage.getItem("site-lang") || "hu";
+            const currentLang = sessionStorage.getItem("site-lang") || "hu";
             const isHu = currentLang === "hu";
 
             const mainTitleEl = document.getElementById("player-main-title");
