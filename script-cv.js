@@ -157,8 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
         images.forEach(img => {
             const slide = document.createElement('div');
             slide.className = 'gallery-slide';
-            const clonedImg = img.cloneNode(true);
-            slide.appendChild(clonedImg);
+            if (img.parentElement && img.parentElement.classList.contains('cv-image-container')) {
+                const clonedContainer = img.parentElement.cloneNode(true);
+                slide.appendChild(clonedContainer);
+            } else {
+                const clonedImg = img.cloneNode(true);
+                slide.appendChild(clonedImg);
+            }
             track.appendChild(slide);
         });
 
