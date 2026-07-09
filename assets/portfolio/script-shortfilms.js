@@ -129,14 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     labelEn: "01 - Storyboard"
                 },
                 {
-                    src: "ctwS-hmObKQ",
+                    src: "x9zRYbyitfE",
                     isYouTube: true,
                     autoplay: false,
                     labelHu: "02 - Inbetween (Fázisrajz)",
                     labelEn: "02 - Inbetween"
                 },
                 {
-                    src: "70bJIgmnkH8",
+                    src: "IAFaLfEyRBg",
                     isYouTube: true,
                     autoplay: false,
                     labelHu: "03 - Stopmotion rajz",
